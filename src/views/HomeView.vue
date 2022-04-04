@@ -1,5 +1,4 @@
 <script>
-import NewsList from '@/components/NewsList.vue'
 
 export default {
     data() {
@@ -7,7 +6,6 @@ export default {
             message: "Hello World! Welcome to VueJS"
         };
     },
-    components: { NewsList }
 }
 </script>
 
