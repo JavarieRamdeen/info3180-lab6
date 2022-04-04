@@ -1,10 +1,16 @@
 <template>
  <ul class="news__list">
- <li class="news__item">News item 1</li>
- <li class="news__item">News item 2</li>
- <li class="news__item">News item 3</li>
+     <div class="row">
+        <div v-for="article in articles" class="col-4">
+            <img v-bind:src="article.urlToImage" class="img-fluid">
+            <h4>{{article.title}}</h4>
+            <p>{{article.description}}</p>
+        </div>
+     </div>
+
  </ul>
 </template>
+
 <script>
 export default {
     data() {
@@ -18,7 +24,7 @@ export default {
         fetch('https://newsapi.org/v2/top-headlines?country=us',
     {
     headers: {
-        'Authorization': 'Bearer <d0b55a1e99df44eb89753c297fa5f7c4>'
+        Authorization: `Bearer ${import.meta.env.VITE_NEWSAPI_TOKEN}`
     }
 })
     .then(function(response) {
@@ -31,3 +37,11 @@ export default {
     }
 }
 </script>
+
+<style>
+    div.col-4{
+        border: 1px solid;
+        padding: 10px;
+        box-shadow: 1px 1px 1px 1px;
+    }
+</style>
